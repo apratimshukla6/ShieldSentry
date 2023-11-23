@@ -14,7 +14,7 @@ setup_args = dict(
     author='Apratim Shukla',
     author_email='apratimshukla6@gmail.com',
     keywords=['Shield', 'ShieldSentry'],
-    url='https://github.com/apratimshukla6/ShieldSentry',
+    url='https://github.com/apratimshukla6/ShieldSentry.py',
     download_url='https://pypi.org/project/shieldsentry/'
 )
 

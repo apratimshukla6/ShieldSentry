@@ -1,9 +1,12 @@
+import os
 import json
 import re
 
 class ShieldSentry:
     def __init__(self, specification="specifications.json"):
-        with open(specification, 'r') as file:
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        specifications_path = os.path.join(current_dir, specification)
+        with open(specifications_path, 'r') as file:
             self.specification = json.load(file)
 
     def validate(self, input_type, value):

@@ -5,7 +5,7 @@ with open('README.md') as readme_file:
 
 setup_args = dict(
     name='shieldsentry',
-    version='0.0.2',
+    version='0.0.4',
     description='ShieldSentry is a Python wrapper for a language agnostic specification created to prevent security attacks.',
     long_description_content_type="text/markdown",
     long_description=README + '\n\n',
@@ -15,9 +15,12 @@ setup_args = dict(
     author_email='apratimshukla6@gmail.com',
     keywords=['Shield', 'ShieldSentry'],
     url='https://github.com/apratimshukla6/ShieldSentry.py',
-    download_url='https://pypi.org/project/shieldsentry/'
+    download_url='https://pypi.org/project/shieldsentry/',
+    include_package_data=True,
+    package_data={
+        'shieldsentry': ['specifications.json'],
+    }
 )
 
-
 if __name__ == '__main__':
-    setup(**setup_args, include_package_data=True, package_data={'': ['*.json']})
+    setup(**setup_args)

@@ -5,7 +5,7 @@ with open('README.md') as readme_file:
 
 setup_args = dict(
     name='shieldsentry',
-    version='0.0.1',
+    version='0.0.2',
     description='ShieldSentry is a Python wrapper for a language agnostic specification created to prevent security attacks.',
     long_description_content_type="text/markdown",
     long_description=README + '\n\n',
@@ -20,4 +20,4 @@ setup_args = dict(
 
 
 if __name__ == '__main__':
-    setup(**setup_args, include_package_data=True, package_data={'': ['*.joblib']})
+    setup(**setup_args, include_package_data=True, package_data={'': ['*.json']})

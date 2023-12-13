@@ -2,6 +2,32 @@ import unittest
 from shieldsentry.shieldsentry import ShieldSentry
 from time import sleep
 
+class ColoredTestResult(unittest.TextTestResult):
+    def addSuccess(self, test):
+        super().addSuccess(test)
+        self.stream.write('\033[92m')  # Set the text to green
+        self.stream.write('PASS ')
+        self.stream.write(self.getDescription(test))
+        self.stream.write('\033[0m\n')  # Reset to default color
+
+    def addError(self, test, err):
+        super().addError(test, err)
+        self.stream.write('\033[91m')  # Set the text to red
+        self.stream.write('ERROR ')
+        self.stream.write(self.getDescription(test))
+        self.stream.write('\033[0m\n')  # Reset to default color
+
+    def addFailure(self, test, err):
+        super().addFailure(test, err)
+        self.stream.write('\033[93m')  # Set the text to yellow
+        self.stream.write('FAIL ')
+        self.stream.write(self.getDescription(test))
+        self.stream.write('\033[0m\n')  # Reset to default color
+
+class ColoredTestRunner(unittest.TextTestRunner):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, resultclass=ColoredTestResult, **kwargs)
+
 class TestShieldSentry(unittest.TestCase):
     def setUp(self):
         # This method will be run before each test
@@ -50,4 +76,4 @@ class TestShieldSentry(unittest.TestCase):
         self.assertTrue(self.input_handler.is_rate_limited(user_id), "User should have exceeded quota")
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(testRunner=ColoredTestRunner)

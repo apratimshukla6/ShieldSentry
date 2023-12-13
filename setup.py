@@ -5,7 +5,7 @@ with open('README.md') as readme_file:
 
 setup_args = dict(
     name='shieldsentry',
-    version='0.0.4',
+    version='0.0.9',
     description='ShieldSentry is a Python wrapper for a language agnostic specification created to prevent security attacks.',
     long_description_content_type="text/markdown",
     long_description=README + '\n\n',
